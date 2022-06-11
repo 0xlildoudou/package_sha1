@@ -13,7 +13,7 @@ function main() {
 
     DATE="$(date '+%Y/%m/%d')"
     # List packages
-    local LINE_NUMBER="$(dpkg -s | sed -nEe '/^Package/p' | cut -d " " -f 2 | wc | cut -d " " -f 4)"
+    local LINE_NUMBER="$(dpkg -s | sed -nEe '/^Package/p' | cut -d " " -f 2 | wc -l"
     for i in $(seq 1 $LINE_NUMBER); do
         local PACKAGE_NAME="$(dpkg -s | sed -nEe '/^Package/p' | cut -d " " -f 2 | sed -n ${i}p)"
         local PACKAGE_VERSION="$(dpkg -s | sed -nEe '/^Version/p' | cut -d " " -f 2 | sed -n ${i}p)"
